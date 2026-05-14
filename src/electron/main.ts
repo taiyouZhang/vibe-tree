@@ -329,7 +329,7 @@ function readLedger(): LedgerFile {
   }
 
   return {
-    entries: entries.filter((entry) => entryTime(entry) >= Date.parse(installedAt)),
+    entries,
     settings,
     installedAt,
   };
@@ -1995,7 +1995,7 @@ function startUsageWatchers() {
   stopUsageWatchers();
   const common = {
     userDataPath: app.getPath("userData"),
-    historyStartAt: ledger.installedAt,
+    historyStartAt: "2000-01-01T00:00:00.000Z",
   };
 
   codexSessionWatcher = startCodexSessionWatcher({
